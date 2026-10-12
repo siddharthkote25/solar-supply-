@@ -14,7 +14,6 @@ This repository contains my **KiCad schematic capture and PCB layout** of the ci
 - **Automatic day/night switching:** the boost converter is shut down while the solar panel is producing power, and turned on when it is dark
 - Optional **ON/OFF header** (K3) for manual control
 - A-version (AP3015A): input from **1 V to 12 V**, up to **100 mA** output
-- Non-A version (AP3015): starts at 1.2 V, up to **350 mA** output
 - Small 2-layer board using mostly 0805 SMD parts
 
 ## How It Works
@@ -29,17 +28,11 @@ If you don't want the automatic switching, leave T1 out. A switch or jumper on K
 
 ## Schematic
 
-![Schematic](docs/schematic.png)
+![Tiny Solar Supply Schematic](<Solar Suply (Schematic).png>)
 
 ## PCB Layout
 
-| Top | Bottom |
-|-----|--------|
-| ![PCB Top](docs/pcb_top.png) | ![PCB Bottom](docs/pcb_bottom.png) |
-
-### 3D View
-
-![3D View](docs/pcb_3d.png)
+🚧 **In progress.** The PCB layout will be added here once it is complete.
 
 ## Bill of Materials
 
@@ -51,9 +44,9 @@ If you don't want the automatic switching, leave T1 out. A switch or jumper on K
 | C1 | 4.7 µF, 50 V, X7R | 0805 | Input capacitor |
 | C2 | 22 µF, 10 V, X7R | 1206 | Output capacitor |
 | C3 | 10 pF, 50 V, X7R | 0805 | Feedback capacitor |
-| L1 | 10 µH, 680 mA | Inductor (resistor-style or SMD) | Must pass the maximum load current |
+| L1 | 10 µH | ASPI-0630LR-100M-T15 | Power inductor |
 | D1, D2 | SS14 | DO-214AC (SMA) | Schottky diodes |
-| IC1 | AP3015 / AP3015A | SOT-23-5 | A-version: 1 V start, 100 mA; non-A: 1.2 V start, 350 mA |
+| IC1 | AP3015AKTR-G1 | SOT-23-5 | Boost converter, A-version |
 | T1 | 2N7002 | SOT-23 | Optional (automatic switching) |
 | K1 | Pin header 1×2, 2.54 mm | | Output (OUT) |
 | K2 | Pin header 1×2, 2.54 mm | | Battery (BAT) |
@@ -74,35 +67,24 @@ If you don't want the automatic switching, leave T1 out. A switch or jumper on K
 
 ```
 .
-├── hardware/
-│   ├── tiny-solar-supply.kicad_pro
-│   ├── tiny-solar-supply.kicad_sch
-│   └── tiny-solar-supply.kicad_pcb
-├── gerbers/            # Fabrication outputs
-├── docs/               # Schematic PDF, screenshots, 3D renders
-├── bom/                # Bill of materials
+├── AP3015AKTR-G1/                 # IC1 symbol & footprint library
+├── SS14/                          # Schottky diode symbol & footprint library
+├── ul_ASPI-0630LR-100M-T15/       # Inductor symbol & footprint library
+├── Tiny Solar Supply.kicad_pro    # KiCad project
+├── Tiny Solar Supply.kicad_sch    # Schematic
+├── Tiny Solar Supply.kicad_pcb    # PCB layout
+├── Solar Suply (Schematic).png    # Schematic image
 └── README.md
 ```
-
-## Design Notes
-
-- **Tool:** KiCad <version>
-- **Board:** 2-layer, <width> × <height> mm
-- **Layout considerations:**
-  - Keep the switching loop (IC1 `SW` → L1 → D1 → C2) as short as possible
-  - Place C1 close to the IC1 `IN` and `GND` pins
-  - Keep the feedback network (R1, R2, C3) close to the `FB` pin and away from the switching node
-  - Use a solid ground plane / pour on the bottom layer
 
 ## Getting Started
 
 1. Clone the repository:
 ```bash
-   git clone https://github.com/siddharthkote25/<repo-name>.git
+   git clone https://github.com/siddharthkote25/solar-supply-.git
 ```
-2. Open `hardware/tiny-solar-supply.kicad_pro` in KiCad.
-3. Run ERC on the schematic and DRC on the PCB.
-4. Generate Gerbers and drill files from **File → Fabrication Outputs**.
+2. Open `Tiny Solar Supply.kicad_pro` in KiCad.
+3. Make sure the three component library folders stay next to the project file so the symbols and footprints load correctly.
 
 ## Usage
 
@@ -118,8 +100,8 @@ If you don't want the automatic switching, leave T1 out. A switch or jumper on K
 ## Status
 
 - [x] Schematic capture
-- [x] PCB layout
-- [ ] DRC / ERC clean
+- [ ] PCB layout
+- [ ] ERC / DRC clean
 - [ ] Gerbers generated
 - [ ] Board fabricated and tested
 
@@ -137,6 +119,6 @@ Portfolio: <https://siddharth-kote-pcb.vercel.app/>
 
 ## References
 
-- C. Valens, *"Tiny Solar Supply,"* Elektor Circuit Special 2023, pp. 6–7
+- C. Valens, *"Tiny Solar Supply,"* Elektor Circuit Special 2023, pp. 6-7
 - Elektor Labs project page: <https://elektormagazine.com/labs/tiny-solar-supply>
 - Diodes Inc. AP3015 / AP3015A datasheet
