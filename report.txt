@@ -1,0 +1,204 @@
+Info: Processing symbol 'C1:Capacitor_SMD:C_0805_2012Metric'.
+Info: Processing symbol 'J1:Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical'.
+Info: Processing symbol 'Q1:Package_TO_SOT_SMD:SOT-23'.
+Info: Processing symbol 'J3:Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical'.
+Info: Processing symbol 'C3:Capacitor_SMD:C_0805_2012Metric'.
+Info: Processing symbol 'D1:SS14:SMA'.
+Info: Processing symbol 'C2:Capacitor_SMD:C_1206_3216Metric'.
+Info: Processing symbol 'J2:Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical'.
+Info: Processing symbol 'D2:SS14:SMA'.
+Info: Processing symbol 'J4:Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal'.
+Info: Processing symbol 'L1:Schotty:IND_ASPI-0630LR_ABR'.
+Info: Processing symbol 'R1:Resistor_SMD:R_0805_2012Metric'.
+Info: Processing symbol 'R4:Resistor_SMD:R_0805_2012Metric'.
+Info: Processing symbol 'R2:Resistor_SMD:R_0805_2012Metric'.
+Info: Processing symbol 'R3:Resistor_SMD:R_0805_2012Metric'.
+Info: Processing symbol 'U3:AP3015AKTR-G1:SOT95P280X145-5N'.
+Updated C1 footprint filters to 'C_*'.
+Add net Net-(J3-Pin_1).
+Connected C1 pin 1 to Net-(J3-Pin_1).
+Add net GND.
+Connected C1 pin 2 to GND.
+Updated C1 unit metadata.
+Added C2 (footprint 'Capacitor_SMD:C_1206_3216Metric').
+Changed REF** reference designator to C2.
+Changed C2 value from C_1206_3216Metric to 22 uF, 10V , X7R (1206).
+Updated C2 symbol association from  to /dce5738c-be8b-4fc9-a9c3-5f57e11c7911.
+Updated C2 fields.
+Updated C2 sheetname to '/'.
+Updated C2 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated C2 footprint filters to 'C_*'.
+Add net /OUT_P.
+Connected C2 pin 1 to /OUT_P.
+Connected C2 pin 2 to GND.
+Updated C2 unit metadata.
+Added C3 (footprint 'Capacitor_SMD:C_0805_2012Metric').
+Changed REF** reference designator to C3.
+Changed C3 value from C_0805_2012Metric to 10 pF, 50V , X7R (0805).
+Updated C3 symbol association from  to /55925725-6ef1-46db-8b66-8f80d6bf5c48.
+Updated C3 fields.
+Updated C3 sheetname to '/'.
+Updated C3 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated C3 footprint filters to 'C_*'.
+Add net Net-(U3-FB).
+Connected C3 pin 2 to Net-(U3-FB).
+Connected C3 pin 1 to /OUT_P.
+Updated C3 unit metadata.
+Added D1 (footprint 'SS14:SMA').
+Changed REF** reference designator to D1.
+Changed D1 value from SMA to SS14.
+Updated D1 symbol association from  to /4e2e9637-9156-4dca-96bb-e2ae46b9092e.
+Updated D1 fields.
+Updated D1 sheetname to '/'.
+Updated D1 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Connected D1 pin P2 to /OUT_P.
+Add net Net-(U3-SW).
+Connected D1 pin P1 to Net-(U3-SW).
+Updated D1 unit metadata.
+Added D2 (footprint 'SS14:SMA').
+Changed REF** reference designator to D2.
+Changed D2 value from SMA to SS14.
+Updated D2 symbol association from  to /15f5d363-7626-4379-8881-54e82cfcf44d.
+Updated D2 fields.
+Updated D2 sheetname to '/'.
+Updated D2 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Add net /BAT_P.
+Connected D2 pin P2 to /BAT_P.
+Add net /SOLAR_P.
+Connected D2 pin P1 to /SOLAR_P.
+Updated D2 unit metadata.
+Added J1 (footprint 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical').
+Changed REF** reference designator to J1.
+Changed J1 value from PinHeader_1x02_P2.54mm_Vertical to Conn_01x02_Pin.
+Updated J1 symbol association from  to /f3993010-a08c-460d-995f-cbab8c5fe2d7.
+Updated J1 fields.
+Updated J1 sheetname to '/'.
+Updated J1 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated J1 footprint filters to 'Connector*:*_1x??_*'.
+Connected J1 pin 2 to /OUT_P.
+Updated J1 unit metadata.
+Added J2 (footprint 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical').
+Changed REF** reference designator to J2.
+Changed J2 value from PinHeader_1x02_P2.54mm_Vertical to Conn_01x02_Pin.
+Updated J2 symbol association from  to /cf64781d-e238-4997-bd73-d679c6f94455.
+Updated J2 fields.
+Updated J2 sheetname to '/'.
+Updated J2 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated J2 footprint filters to 'Connector*:*_1x??_*'.
+Connected J2 pin 1 to /BAT_P.
+Connected J2 pin 2 to GND.
+Updated J2 unit metadata.
+Added J3 (footprint 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical').
+Changed REF** reference designator to J3.
+Changed J3 value from PinHeader_1x02_P2.54mm_Vertical to Conn_01x02_Pin.
+Updated J3 symbol association from  to /bf47b8c3-9c67-41ae-9197-1bab7af1fc2a.
+Updated J3 fields.
+Updated J3 sheetname to '/'.
+Updated J3 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated J3 footprint filters to 'Connector*:*_1x??_*'.
+Connected J3 pin 2 to /BAT_P.
+Connected J3 pin 1 to Net-(J3-Pin_1).
+Connected J1 pin 1 to GND.
+Added C1 (footprint 'Capacitor_SMD:C_0805_2012Metric').
+Added J4 (footprint 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal').
+Changed REF** reference designator to J4.
+Changed J4 value from PinHeader_1x02_P2.54mm_Horizontal to Conn_01x02_Pin.
+Updated J4 symbol association from  to /1b3f0ce3-90d1-4ad9-be7d-a427cb8caf66.
+Updated J4 fields.
+Updated J4 sheetname to '/'.
+Updated J4 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated J4 footprint filters to 'Connector*:*_1x??_*'.
+Connected J4 pin 2 to GND.
+Connected J4 pin 1 to /SOLAR_P.
+Updated J4 unit metadata.
+Changed REF** reference designator to C1.
+Added L1 (footprint 'Schotty:IND_ASPI-0630LR_ABR').
+Changed REF** reference designator to L1.
+Changed L1 value from IND_ASPI-0630LR_ABR to ASPI-0630LR-100M-T15.
+Updated L1 symbol association from  to /188f5887-4544-457f-b9e2-13a72eb0a7fb.
+Updated L1 fields.
+Updated L1 sheetname to '/'.
+Updated L1 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated L1 footprint filters to 'IND_ASPI-0630LR_ABR IND_ASPI-0630LR_ABR-M IND_ASPI-0630LR_ABR-L'.
+Connected L1 pin 1 to Net-(U3-SW).
+Connected L1 pin 2 to Net-(J3-Pin_1).
+Updated L1 unit metadata.
+Updated J3 unit metadata.
+Added Q1 (footprint 'Package_TO_SOT_SMD:SOT-23').
+Changed REF** reference designator to Q1.
+Changed Q1 value from SOT-23 to 2N7002.
+Updated Q1 symbol association from  to /8a2cb2fe-2181-48c0-a817-414a6cec80af.
+Updated Q1 fields.
+Updated Q1 sheetname to '/'.
+Updated Q1 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated Q1 footprint filters to 'SOT?23*'.
+Add net Net-(Q1-D).
+Connected Q1 pin 3 to Net-(Q1-D).
+Connected Q1 pin 1 to /SOLAR_P.
+Connected Q1 pin 2 to GND.
+Updated Q1 unit metadata.
+Changed C1 value from C_0805_2012Metric to 4.7 uF, 50V, X7R (0805).
+Added R1 (footprint 'Resistor_SMD:R_0805_2012Metric').
+Changed REF** reference designator to R1.
+Changed R1 value from R_0805_2012Metric to 1MOhm.
+Updated R1 symbol association from  to /c422ba70-4321-4083-87e3-78049ccbd389.
+Updated R1 fields.
+Updated R1 sheetname to '/'.
+Updated R1 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated R1 footprint filters to 'R_*'.
+Connected R1 pin 1 to /OUT_P.
+Connected R1 pin 2 to Net-(U3-FB).
+Updated C1 symbol association from  to /0459ffd1-7d5d-4fce-b52f-c44f4b19b348.
+Updated C1 fields.
+Added R2 (footprint 'Resistor_SMD:R_0805_2012Metric').
+Changed REF** reference designator to R2.
+Changed R2 value from R_0805_2012Metric to 604 KOhm, 1%.
+Updated R2 symbol association from  to /015b8c3c-172e-4abf-aebf-b8a930803ea9.
+Updated R2 fields.
+Updated R2 sheetname to '/'.
+Updated R2 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated R2 footprint filters to 'R_*'.
+Connected R2 pin 2 to GND.
+Connected R2 pin 1 to Net-(U3-FB).
+Updated R2 unit metadata.
+Updated C1 sheetname to '/'.
+Added R3 (footprint 'Resistor_SMD:R_0805_2012Metric').
+Changed REF** reference designator to R3.
+Changed R3 value from R_0805_2012Metric to 10 KOhm.
+Updated R3 symbol association from  to /ed9c10ba-e2e8-4781-ae05-15631b7c3faf.
+Updated R3 fields.
+Updated R3 sheetname to '/'.
+Updated R3 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated R3 footprint filters to 'R_*'.
+Connected R3 pin 2 to Net-(Q1-D).
+Connected R3 pin 1 to Net-(J3-Pin_1).
+Updated R3 unit metadata.
+Updated R1 unit metadata.
+Added R4 (footprint 'Resistor_SMD:R_0805_2012Metric').
+Changed REF** reference designator to R4.
+Changed R4 value from R_0805_2012Metric to 1MOhm.
+Updated R4 symbol association from  to /63f2b707-bad9-4846-87c4-9a0433a73231.
+Updated R4 fields.
+Updated R4 sheetname to '/'.
+Updated R4 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Updated R4 footprint filters to 'R_*'.
+Connected R4 pin 1 to /SOLAR_P.
+Connected R4 pin 2 to GND.
+Updated R4 unit metadata.
+Updated C1 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Added U3 (footprint 'AP3015AKTR-G1:SOT95P280X145-5N').
+Changed REF** reference designator to U3.
+Changed U3 value from SOT95P280X145-5N to AP3015AKTR-G1.
+Updated U3 symbol association from  to /a333e381-d033-4c89-ae7a-c8d4a2d0a7ce.
+Updated U3 fields.
+Updated U3 sheetname to '/'.
+Updated U3 sheetfile to 'Tiny Solar Supply.kicad_sch'.
+Connected U3 pin 1 to Net-(U3-SW).
+Connected U3 pin 5 to Net-(J3-Pin_1).
+Connected U3 pin 4 to Net-(Q1-D).
+Connected U3 pin 3 to Net-(U3-FB).
+Connected U3 pin 2 to GND.
+Updated U3 unit metadata.
+
+
+Info: Total warnings: 0, errors: 0.
