@@ -32,7 +32,11 @@ If you don't want the automatic switching, leave T1 out. A switch or jumper on K
 
 ## PCB Layout
 
-🚧 **In progress.** The PCB layout will be added here once it is complete.
+![Tiny Solar Supply PCB Layout](<Solar Supply (Layout Design ).png>)
+
+## 3D View
+
+![Tiny Solar Supply 3D View](<3D View (Solar Supply).png>)
 
 ## Bill of Materials
 
@@ -67,13 +71,16 @@ If you don't want the automatic switching, leave T1 out. A switch or jumper on K
 
 ```
 .
-├── AP3015AKTR-G1/                 # IC1 symbol & footprint library
-├── SS14/                          # Schottky diode symbol & footprint library
-├── ul_ASPI-0630LR-100M-T15/       # Inductor symbol & footprint library
-├── Tiny Solar Supply.kicad_pro    # KiCad project
-├── Tiny Solar Supply.kicad_sch    # Schematic
-├── Tiny Solar Supply.kicad_pcb    # PCB layout
-├── Solar Suply (Schematic).png    # Schematic image
+├── AP3015AKTR-G1/                    # IC1 symbol & footprint library
+├── SS14/                             # Schottky diode symbol & footprint library
+├── ul_ASPI-0630LR-100M-T15/          # Inductor symbol & footprint library
+├── Tiny Solar Supply.kicad_pro       # KiCad project
+├── Tiny Solar Supply.kicad_sch       # Schematic
+├── Tiny Solar Supply.kicad_pcb       # PCB layout
+├── Solar Suply (Schematic).png       # Schematic image
+├── Solar Supply (Layout Design ).png # PCB layout image
+├── 3D View (Solar Supply).png        # 3D render
+├── report.txt                        # KiCad report
 └── README.md
 ```
 
@@ -100,8 +107,7 @@ If you don't want the automatic switching, leave T1 out. A switch or jumper on K
 ## Status
 
 - [x] Schematic capture
-- [ ] PCB layout
-- [ ] ERC / DRC clean
+- [x] PCB layout (routing and silkscreen)
 - [ ] Gerbers generated
 - [ ] Board fabricated and tested
 
