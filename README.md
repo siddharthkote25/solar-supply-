@@ -1,130 +1,186 @@
-# Tiny Solar Supply: KiCad Schematic & PCB Layout
+# Tiny Solar Supply: PCB Design
 
-A compact solar-charged 3.3 V supply built around the **AP3015A** micropower boost converter. A small solar panel charges a single 1.2 V Ni-MH AA cell during the day; when it gets dark, the boost converter switches on automatically and turns the battery voltage into a regulated **3.3 V** rail for microcontroller-based loads.
+### ☀️ Solar-Charged 3.3 V Boost Power Supply
 
-This repository contains my **KiCad schematic capture and PCB layout** of the circuit.
+**Tiny Solar Supply** is a KiCad PCB design project: a compact power supply that charges a single **1.2 V Ni-MH AA cell** from a small solar panel and boosts it to a regulated **3.3 V** output using the **AP3015A** micropower boost converter. It switches automatically between charging (daytime) and boosting (night).
 
-> **Credit:** The circuit is the original design of **Clemens Valens (Elektor)**, published as *"Tiny Solar Supply"* in *Elektor Circuit Special 2023* (project 220321-01). Original project files: <https://elektormagazine.com/labs/tiny-solar-supply>. This repo is my own KiCad re-implementation, made for learning and portfolio purposes. All credit for the circuit concept goes to the original author.
+This repository contains the **KiCad 9 schematic, PCB layout, component symbols and footprints, and design images** for the board.
+
+> **Credit:** The circuit is the original design of **Clemens Valens (Elektor)**, published as *"Tiny Solar Supply"* in *Elektor Circuit Special 2023* (project 220321-01). Original project files: <https://elektormagazine.com/labs/tiny-solar-supply>. This repo is my own KiCad re-implementation for learning and portfolio purposes.
 
 ---
 
-## Features
+## 🔧 Hardware
 
-- Regulated **3.3 V output** from a 1.2 V Ni-MH cell
-- **Automatic day/night switching:** the boost converter is shut down while the solar panel is producing power, and turned on when it is dark
-- Optional **ON/OFF header** (K3) for manual control
-- A-version (AP3015A): input from **1 V to 12 V**, up to **100 mA** output
-- Small 2-layer board using mostly 0805 SMD parts
+| Component | Purpose |
+| --- | --- |
+| **AP3015A (AP3015AKTR-G1)** | Micropower step-up (boost) DC/DC converter |
+| **2N7002 (T1)** | Automatic day/night shutdown control for IC1 |
+| **SS14 (D1, D2)** | D1: boost rectifier, D2: battery charging path |
+| **ASPI-0630LR-100M-T15 (L1)** | 10 µH boost inductor |
+| **1.2 V Ni-MH AA cell** | Energy storage |
+| **Solar panel** | Charging source |
+| **Resistors & Capacitors** | Output voltage feedback, input/output filtering |
+| **Pin headers** | Solar, battery, ON/OFF and output connections |
 
-## How It Works
+---
 
-1. **Daytime:** the solar panel (K4) charges the battery (K2) through Schottky diode **D2**. The panel voltage also pulls the gate of **T1** (2N7002) high, so T1 conducts and pulls the `/SHDN` pin of **IC1** low, turning the boost converter off.
-2. **Night:** when the panel voltage drops, charging stops, T1 turns off, and `/SHDN` is released. IC1 starts up and boosts the battery voltage to 3.3 V at the output (K1).
-3. **Output voltage** is set by the feedback divider R1/R2:
+## ⚙️ How It Works
 
-   `VOUT = 1.23 × (1 + R1 / R2) = 1.23 × (1 + 1 MΩ / 604 kΩ) ≈ 3.27 V`
+* **Daytime:** the solar panel charges the battery through D2 and pulls the gate of T1 high. T1 conducts and pulls the `/SHDN` pin of IC1 low, so the boost converter is off.
+* **Night:** the panel voltage drops, T1 turns off, `/SHDN` is released and IC1 boosts the battery voltage to 3.3 V.
+* **Output voltage** is set by the feedback divider R1/R2:
 
-If you don't want the automatic switching, leave T1 out. A switch or jumper on K3 gives extra manual control.
-
-## Schematic
-
-![Tiny Solar Supply Schematic](<Solar Suply (Schematic).png>)
-
-## PCB Layout
-
-![Tiny Solar Supply PCB Layout](<Solar Supply (Layout Design ).png>)
-
-## 3D View
-
-![Tiny Solar Supply 3D View](<3D View (Solar Supply).png>)
-
-## Bill of Materials
-
-| Ref | Value | Package / Footprint | Notes |
-|-----|-------|---------------------|-------|
-| R1, R4 | 1 MΩ | 0805 | 0.125 W |
-| R2 | 604 kΩ, 1 % | 0805 | Sets output voltage with R1 |
-| R3 | 10 kΩ | 0805 | Pull-up for T1 drain / IC1 `/SHDN` |
-| C1 | 4.7 µF, 50 V, X7R | 0805 | Input capacitor |
-| C2 | 22 µF, 10 V, X7R | 1206 | Output capacitor |
-| C3 | 10 pF, 50 V, X7R | 0805 | Feedback capacitor |
-| L1 | 10 µH | ASPI-0630LR-100M-T15 | Power inductor |
-| D1, D2 | SS14 | DO-214AC (SMA) | Schottky diodes |
-| IC1 | AP3015AKTR-G1 | SOT-23-5 | Boost converter, A-version |
-| T1 | 2N7002 | SOT-23 | Optional (automatic switching) |
-| K1 | Pin header 1×2, 2.54 mm | | Output (OUT) |
-| K2 | Pin header 1×2, 2.54 mm | | Battery (BAT) |
-| K3 | Pin header 1×2, 2.54 mm | | ON/OFF |
-| K4 | Pin header 1×2, right-angle, 2 mm | | Solar panel (SOLAR) |
-
-## IC1 Pinout (as used in the schematic)
-
-| Pin | Name | Connection |
-|-----|------|------------|
-| 1 | SW | L1 / D1 anode |
-| 2 | GND | Ground |
-| 3 | FB | R1 / R2 divider, C3 |
-| 4 | /SHDN | R3, T1 drain |
-| 5 | IN | Battery / L1 input, C1 |
-
-## Repository Structure
-
+```text
+VOUT = 1.23 × (1 + R1 / R2) = 1.23 × (1 + 1 MΩ / 604 kΩ) ≈ 3.27 V
 ```
-.
-├── AP3015AKTR-G1/                    # IC1 symbol & footprint library
-├── SS14/                             # Schottky diode symbol & footprint library
-├── ul_ASPI-0630LR-100M-T15/          # Inductor symbol & footprint library
-├── Tiny Solar Supply.kicad_pro       # KiCad project
-├── Tiny Solar Supply.kicad_sch       # Schematic
-├── Tiny Solar Supply.kicad_pcb       # PCB layout
-├── Solar Suply (Schematic).png       # Schematic image
-├── Solar Supply (Layout Design ).png # PCB layout image
-├── 3D View (Solar Supply).png        # 3D render
-├── report.txt                        # KiCad report
+
+* An optional ON/OFF header (K3) gives manual control. Leave T1 out to disable the automatic switching.
+
+---
+
+## 📐 Schematic Design
+
+The circuit schematic was designed in **KiCad 9**, covering the boost converter, the automatic shutdown stage, battery/solar connections and the feedback network.
+
+### Tiny Solar Supply Schematic
+
+![Tiny Solar Supply Schematic](./Solar%20Suply%20%28Schematic%29.png)
+
+### Key Design Work
+
+* Schematic capture and circuit connectivity
+* Component symbol and footprint integration (AP3015A, SS14, ASPI inductor)
+* Net labeling
+* Power and ground connections
+* Feedback divider (R1/R2) calculation for the 3.3 V output
+* Automatic day/night shutdown using a MOSFET on the `/SHDN` pin
+* Connector design for solar panel, battery, ON/OFF and output
+
+---
+
+## 🖥️ PCB Design
+
+The project follows a complete **KiCad PCB design workflow**:
+
+```text
+Schematic → Symbol & Footprint Assignment → PCB Layout
+→ Component Placement → Routing → Silkscreen
+```
+
+### PCB Layout
+
+![Tiny Solar Supply PCB Layout](./Solar%20Supply%20%28Layout%20Design%20%29.png)
+
+### 3D View
+
+![Tiny Solar Supply 3D View](./3D%20View%20%28Solar%20Supply%29.png)
+
+### PCB Design Work
+
+* PCB layout and board organization
+* Component placement for a short boost-converter switching loop
+* SMD footprint management (0805, 1206, SOT-23, SOT-23-5, DO-214AC)
+* Power and signal routing
+* Feedback network placement close to the `FB` pin
+* Ground connections
+* Silkscreen labelling
+
+---
+
+## 🔌 Main Connections
+
+```text
+   Solar panel ──► D2 ──► Battery (1.2 V Ni-MH)
+        │                      │
+        └──► T1 (2N7002)       └──► L1 ──► IC1 (AP3015A) ──► D1 ──► 3.3 V OUT
+               │                              ▲
+               └────────── /SHDN ─────────────┘
+                                              │
+                               R1 / R2 feedback divider
+```
+
+---
+
+## 🛠️ Tools & Technologies
+
+**PCB Design**
+
+* KiCad 9
+* Schematic Capture
+* PCB Layout
+* Component Placement
+* Routing
+* Symbol and Footprint Integration
+
+**Electronics**
+
+* Boost (step-up) DC/DC conversion
+* Solar charging
+* MOSFET switching
+* Feedback voltage setting
+* Power & Signal Routing
+
+**Version Control**
+
+* Git
+* GitHub
+
+---
+
+## 📂 Repository Contents
+
+```text
+solar-supply-/
+│
+├── AP3015AKTR-G1/                     # IC1 symbol & footprint
+├── SS14/                              # Schottky diode symbol & footprint
+├── ul_ASPI-0630LR-100M-T15/           # Inductor symbol & footprint
+├── Tiny Solar Supply.kicad_sch        # Schematic
+├── Tiny Solar Supply.kicad_pcb        # PCB layout
+├── Tiny Solar Supply.kicad_pro        # KiCad project file
+├── report.txt                         # KiCad report
+├── Solar Suply (Schematic).png        # Schematic image
+├── Solar Supply (Layout Design ).png  # PCB layout image
+├── 3D View (Solar Supply).png         # 3D render
 └── README.md
 ```
 
-## Getting Started
+---
 
-1. Clone the repository:
-```bash
-   git clone https://github.com/siddharthkote25/solar-supply-.git
-```
-2. Open `Tiny Solar Supply.kicad_pro` in KiCad.
-3. Make sure the three component library folders stay next to the project file so the symbols and footprints load correctly.
+## 📋 Bill of Materials
 
-## Usage
+| Ref | Value | Footprint |
+| --- | --- | --- |
+| R1, R4 | 1 MΩ | 0805 |
+| R2 | 604 kΩ, 1 % | 0805 |
+| R3 | 10 kΩ | 0805 |
+| C1 | 4.7 µF, 50 V, X7R | 0805 |
+| C2 | 22 µF, 10 V, X7R | 1206 |
+| C3 | 10 pF, 50 V, X7R | 0805 |
+| L1 | 10 µH (ASPI-0630LR-100M-T15) | SMD inductor |
+| D1, D2 | SS14 | DO-214AC |
+| IC1 | AP3015AKTR-G1 | SOT-23-5 |
+| T1 | 2N7002 | SOT-23 |
+| K1, K2, K3 | Pin header 1×2, 2.54 mm | Through-hole |
+| K4 | Pin header 1×2, right-angle, 2 mm | Through-hole |
 
-| Connector | Connect to |
-|-----------|------------|
-| K4 (SOLAR) | Solar panel (+ / −) |
-| K2 (BAT) | 1.2 V Ni-MH AA cell |
-| K3 (ON/OFF) | Switch or jumper |
-| K1 (OUT) | 3.3 V load |
+---
 
-> **Note:** Observe polarity on K2 and K4. Use a Ni-MH cell only, as the circuit is designed around a 1.2 V rechargeable cell.
+## 🎯 Skills Demonstrated
 
-## Status
+`KiCad 9` `PCB Design` `Schematic Capture` `PCB Layout`
+`Symbol & Footprint Integration` `Component Placement` `Routing`
+`Boost Converter Design` `Power Electronics` `Git` `GitHub`
 
-- [x] Schematic capture
-- [x] PCB layout (routing and silkscreen)
-- [ ] Gerbers generated
-- [ ] Board fabricated and tested
+---
 
-## License
+### 📜 License & Credit
 
-Original circuit design © Clemens Valens / Elektor. Please check the license on the original Elektor Labs project page before reusing or redistributing. My KiCad files in this repo are shared for educational purposes.
+Original circuit design © Clemens Valens / Elektor. Please check the license on the original Elektor Labs project page before reusing or redistributing. My KiCad files are shared for educational purposes.
 
-## Author
+### 👨‍💻 Author
 
 **Siddharth Kote**
-Electronics & Communication Engineering
-GitHub: [@siddharthkote25](https://github.com/siddharthkote25)
-Email: siddharthkote129@gmail.com
-Portfolio: <https://siddharth-kote-pcb.vercel.app/>
-
-## References
-
-- C. Valens, *"Tiny Solar Supply,"* Elektor Circuit Special 2023, pp. 6-7
-- Elektor Labs project page: <https://elektormagazine.com/labs/tiny-solar-supply>
-- Diodes Inc. AP3015 / AP3015A datasheet
+siddharthkote129@gmail.com
+[GitHub](https://github.com/siddharthkote25) · [Portfolio](https://siddharth-kote-pcb.vercel.app/)
